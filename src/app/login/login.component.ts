@@ -29,16 +29,20 @@ export class LoginComponent implements OnInit {
       sessionStorage.setItem('loginuser',JSON.stringify(this.users));
       if(this.users.users_status == 'admin')
       this.router.navigate(['/admin']);
-      else
+      else  if(this.users.users_status == 'user')
       this.router.navigate(['/user']);
-    }else{
+      else{
+        this.error_txt = 'Invalid Username or Password';
+        $('.alert').show();
+      }
+          }else{
       this.error_txt = 'Invalid Username or Password';
-      $('.alert').show('');
+      $('.alert').show();
     } 
 
     }else{
       this.error_txt = 'Please enter Username and Password';
-      $('.alert').show('');
+      $('.alert').show();
     }
     
   }

@@ -30,7 +30,17 @@ async getAllUsers(){
 
     }
 async insertUser(newuser){
+  newuser.ApiKey = 'NetLogApi';
+  newuser.fn = 'Insert';
   let result = await axios.post(this.apiurl,newuser);
+  return result.data;
+}
+
+async updateUser(edituser){
+  edituser.ApiKey = 'NetLogApi';
+  edituser.fn = 'Update';
+  console.log(edituser);
+  let result = await axios.post(this.apiurl,edituser);
   return result.data;
 }
 }
